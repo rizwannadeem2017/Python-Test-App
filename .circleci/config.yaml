@@ -30,7 +30,7 @@ jobs:
           command: |
             . helloworld/bin/activate
             pyinstaller -F hello_world.py
-            docker build -t $DOCKER_LOGIN/$IMAGE_NAME:$TAG .
+            docker build -t $docker_user/$IMAGE_NAME:$TAG .
             echo $docker_pass | docker login -u $docker_user --password-stdin
             docker push $docker_user/$IMAGE_NAME:$TAG
       - run:
