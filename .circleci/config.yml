@@ -30,7 +30,7 @@ jobs:
             docker push $docker_user/$IMAGE_NAME:$TAG
   deploy: 
     docker:
-      - image: circleci/python:latest
+      - image: $docker_user/$IMAGE_NAME:$TAG
     steps:
       - run:
           name: Deploy app to Linux Server where docker is installed 
