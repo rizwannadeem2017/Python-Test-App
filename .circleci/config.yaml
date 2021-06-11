@@ -38,7 +38,8 @@ jobs:
 #       - image: circleci/python:latest
 # #         environment:
 # #           FLASK_CONFIG: testing
-    steps: 
+
+#steps: 
       - run:
           name: Deploy app to Linux Server where docker is installed 
           command: |
