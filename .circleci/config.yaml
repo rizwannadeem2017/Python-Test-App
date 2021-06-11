@@ -34,6 +34,10 @@ jobs:
             echo $docker_pass | docker login -u $docker_user --password-stdin
             docker push $docker_user/$IMAGE_NAME:$TAG
   deploy: 
+    docker:
+      - image: circleci/python:latest
+#         environment:
+#           FLASK_CONFIG: testing
     steps: 
       - run:
           name: Deploy app to Linux Server where docker is installed 
