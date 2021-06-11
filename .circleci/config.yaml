@@ -33,23 +33,23 @@ jobs:
             docker build -t $docker_user/$IMAGE_NAME:$TAG .
             echo $docker_pass | docker login -u $docker_user --password-stdin
             docker push $docker_user/$IMAGE_NAME:$TAG
-  deploy: 
-    docker:
-      - image: circleci/python:latest
-#         environment:
-#           FLASK_CONFIG: testing
+#   deploy: 
+#     docker:
+#       - image: circleci/python:latest
+# #         environment:
+# #           FLASK_CONFIG: testing
     steps: 
       - run:
           name: Deploy app to Linux Server where docker is installed 
           command: |
             ssh -o StrictHostKeyChecking=no ubuntu@18.207.226.40 "/bin/bash ./deploy_app.sh $docker_user/$IMAGE_NAME:$TAG"
 
-workflows: 
-  version: 2
-    commit-workflow:
-      jobs:
-        - build
-        - deploy 
+# workflows: 
+#   version: 2
+#     commit-workflow:
+#       jobs:
+#         - build
+#         - deploy 
 #     schedule-workflow:
 #       triggers:
 #         - schedule:
