@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Deploy app to Linux Server where docker is installed 
           command: |
-            ssh -o StrictHostKeyChecking=no ubuntu@ 52.207.136.246 "/bin/bash ./deploy_app.sh $docker_user/$IMAGE_NAME:$TAG"
+            ssh -o StrictHostKeyChecking=no ubuntu@52.207.136.246 "/bin/bash ./deploy_app.sh $docker_user/$IMAGE_NAME:$TAG"
 workflows: 
   version: 2
   commit-workflow:
