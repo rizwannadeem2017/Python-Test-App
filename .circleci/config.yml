@@ -22,10 +22,9 @@ jobs:
     executor: managed-circleci-executer
     steps:
     #  - checkout
-      - steps: 
-          run: 
+       - run: 
             command:  "build-env-&-build-code-then-build-docker-image"
-      - setup_remote_docker:
+       - setup_remote_docker:
           docker_layer_caching: false
   deploy: 
     executor: managed-circleci-executer
