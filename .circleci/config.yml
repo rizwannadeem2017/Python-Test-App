@@ -4,7 +4,7 @@ executors:
     docker:
       - image: circleci/python:latest
 commands:
-  "build-env-&-build-code-then-build-docker-image":
+  hello:
     steps:
       - run: checkout
       - run: echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
@@ -23,7 +23,7 @@ jobs:
     steps:
     #  - checkout
        - run: 
-            command:  "build-env-&-build-code-then-build-docker-image"
+            command:  hello
        - setup_remote_docker:
           docker_layer_caching: false
   deploy: 
