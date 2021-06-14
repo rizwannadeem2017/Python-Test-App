@@ -6,7 +6,7 @@ executors:
 commands:
   hello:
     steps:
-      - run: checkout
+      - checkout
       - run: echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
       - run: echo 'export IMAGE_NAME=python-circleci-docker' >> $BASH_ENV
       - run: virtualenv helloworld
@@ -21,6 +21,7 @@ jobs:
   build:
     executor: managed-circleci-executer
     steps:
+       - checkout
        - hello
        - setup_remote_docker:
           docker_layer_caching: false
