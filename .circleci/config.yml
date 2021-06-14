@@ -47,7 +47,7 @@ workflows:
             - build
         - deploy:
             requires:
-            - build
+            - hold
 
   # schedule-workflow:
   #     triggers:
