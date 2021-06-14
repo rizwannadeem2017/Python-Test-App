@@ -21,9 +21,7 @@ jobs:
   build:
     executor: managed-circleci-executer
     steps:
-    #  - checkout
-       - run: 
-            command:  hello
+       - hello
        - setup_remote_docker:
           docker_layer_caching: false
   deploy: 
