@@ -41,9 +41,14 @@ workflows:
   commit-workflow:
       jobs:
         - build
+        - hold:
+            type: approval
+            requires: 
+            - build
         - deploy:
             requires:
             - build
+
   # schedule-workflow:
   #     triggers:
   #       - schedule:
