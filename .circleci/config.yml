@@ -28,10 +28,10 @@ jobs:
             docker build -t $docker_user/$IMAGE_NAME:$TAG .
             echo $docker_pass | docker login -u $docker_user --password-stdin
             docker push $docker_user/$IMAGE_NAME:$TAG
-  # deploy: 
-  #   docker:
-  #     - image: $docker_user/$IMAGE_NAME:$TAG
-  #   steps:
+  deploy: 
+    docker:
+      - image: circleci/python:latest
+    steps:
       - run:
           name: Deploy app to Linux Server where docker is installed 
           command: |
@@ -41,7 +41,9 @@ workflows:
   commit-workflow:
       jobs:
         - build
-        # - deploy 
+        - deploy:
+            requires:
+            - build
   # schedule-workflow:
   #     triggers:
   #       - schedule:
